@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 
 function AudienceBuilder() {
   const { user } = useContext(AuthContext);
-
   const [campaignName, setCampaignName] = useState("");
   const [totalSpent, setTotalSpent] = useState("");
   const [visitCount, setVisitCount] = useState("");
@@ -12,7 +11,6 @@ function AudienceBuilder() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 🧠 Auto-generated message per user
   const generateMessage = (customer) => {
     return `Hi ${customer.name}, enjoy 20% off on your next visit!`;
   };
@@ -27,14 +25,14 @@ function AudienceBuilder() {
       setLoading(true);
       const rules = {
         totalSpent: { operator: "gt", value: parseInt(totalSpent) },
-        visitCount: { operator: "lt", value: parseInt(visitCount) }
+        visitCount: { operator: "lt", value: parseInt(visitCount) },
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/campaigns",
+        `${process.env.REACT_APP_BACKEND_URL}/api/campaigns`,
         {
           name: campaignName,
-          rules
+          rules,
         },
         { withCredentials: true }
       );
