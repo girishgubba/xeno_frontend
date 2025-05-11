@@ -1,70 +1,100 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Xeno Assignment Frontend
 
-In the project directory, you can run:
+## 📋 Local Setup Instructions
 
-### `npm start`
+### Prerequisites
+- Node.js (v18+)
+- npm (v9+)
+- Backend server 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Steps
+1. Clone the repository
+   
+   git clone https://github.com/girishgubba/xeno_frontend.git
+   cd xeno_frontend
+   
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Install dependencies
+   npm install
+  
 
-### `npm test`
+3. Set up environment variables
+   
+     cp .env.example .env
+    
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Run the app
+  
+   npm run dev
+   
+   Open `http://localhost:3000` in your browser.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🗺️ Architecture Diagram
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+                          +-------------------+
+                          |     Frontend      |
+                          | (Next.js/React)   |
+                          +---------+---------+
+                                    |
+                                    | API Calls
+                                    |
++----------------+         +--------+--------+        +-------------------+
+|   AI Services  +<------->|   Backend API   +<------>|   MySQL Database  |
+| (OpenAI, Gemini)|         | (Node.js/Express)|        |  (Railway Hosted) |
++----------------+         +------------------+        +-------------------+
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Key Flow:
+1. Frontend sends requests to the backend.
+2. Backend processes requests, interacts with MySQL, and calls AI APIs.
+3. AI results are returned to the frontend via the backend.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🛠️ Tech Stack & AI Tools
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
+- Framework: Next.js (React)
+- Styling:  CSS
+- State Management: React Context
+- Routing: Next.js Router
 
-## Learn More
+### Backend
+- Framework: Node.js
+- Database: MySQL 
+- Auth: Google OAuth 2.0
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
+- Frontend: Vercel
+- Backend: Railway
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## ⚠️ Known Limitations & Assumptions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Limitations
+1. Performance: Image processing with Gemini may be slow on low-end devices.
+2. Scalability: Backend is monolithic and not optimized for high traffic.
+3. Error Handling: Limited retry logic for failed API calls to AI services.
+4. Mobile UI: Not fully responsive on all screen sizes.
+
+### Assumptions
+1. Authentication: Users have a Google account for OAuth login.
+2. API Keys: OpenAI and Gemini keys are provided via environment variables.
+3. ]Backend Availability: Backend server is running at `http://localhost:3000`.
+4. Rate Limits: AI APIs are assumed to have sufficient quota for demo usage.
+
+---
+
+## 🔗 Links
+- [Backend Repository](https://github.com/girishgubba/xeno_backend)
+- [Live Demo](https://xenocrmassign.netlify.app/login)
+
+---
