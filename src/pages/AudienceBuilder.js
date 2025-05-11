@@ -3,7 +3,9 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
 function AudienceBuilder() {
+  // eslint-disable-next-line no-unused-vars
   const { user } = useContext(AuthContext);
+
   const [campaignName, setCampaignName] = useState("");
   const [totalSpent, setTotalSpent] = useState("");
   const [visitCount, setVisitCount] = useState("");
